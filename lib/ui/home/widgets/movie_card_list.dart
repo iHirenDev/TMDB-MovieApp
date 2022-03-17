@@ -3,20 +3,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_demo/ui/home/bloc/trending_movie_bloc.dart';
-import 'package:flutter_bloc_demo/ui/home/widgets/movie_card.dart';
-
-import '../../../helper/constants.dart';
+import 'package:flutter_bloc_demo/ui/home/widgets/movies_list.dart';
 
 class MovieCardList extends StatelessWidget {
   const MovieCardList({Key? key}) : super(key: key);
-
-  final imageBaseUrl = 'https://image.tmdb.org/t/p/w185/';
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return BlocBuilder<TrendingMovieBloc, TrendingMovieState>(
         builder: (context, state) {
+      return state.status.isSuceess
+          ? MoviesList(movie: state.trendingMovie, size: size)
+          : state.status.isLoading
+              ? Center(child: CircularProgressIndicator())
+              : state.status.isFailure
+                  ? Center(child: Text('Failed to fetch movies'))
+                  : SizedBox();
+/*
       switch (state.status) {
         case TrendingMovieStatus.failure:
           return const Center(
@@ -58,7 +62,7 @@ class MovieCardList extends StatelessWidget {
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(5.0))),
                                     child: FadeInImage.assetNetwork(
-                                        height: size.height * 0.28,
+                                        height: size.height * 0.30,
                                         width: size.width * 0.4,
                                         fit: BoxFit.fill,
                                         placeholder: 'assets/movies.png',
@@ -75,7 +79,7 @@ class MovieCardList extends StatelessWidget {
                                         child: Text(
                                           state.trendingMovie[index].title,
                                           style: TextStyle(
-                                              fontSize: 20,
+                                              fontSize: 18,
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
@@ -107,55 +111,11 @@ class MovieCardList extends StatelessWidget {
               ],
             ),
           );
-
-        // SingleChildScrollView(
-        //   scrollDirection: Axis.horizontal,
-        //   child: Row(
-        //     children: <Widget>[
-        //       Container(
-        //         margin: EdgeInsets.only(
-        //           left: kDefaultPadding,
-        //           top: kDefaultPadding / 2,
-        //           bottom: kDefaultPadding * 2.5,
-        //         ),
-        //         width: size.width * 0.4,
-        //         child: Column(children: <Widget>[
-        //           Container(
-        //               padding: EdgeInsets.all(kDefaultPadding / 2),
-        //               decoration: BoxDecoration(
-        //                 color: Colors.white,
-        //                 borderRadius: BorderRadius.only(
-        //                   bottomLeft: Radius.circular(10),
-        //                   bottomRight: Radius.circular(10),
-        //                 ),
-        //                 boxShadow: [
-        //                   BoxShadow(
-        //                     offset: Offset(0, 10),
-        //                     blurRadius: 50,
-        //                     color: kPrimaryColor.withOpacity(0.23),
-        //                   ),
-        //                 ],
-        //               ),
-        //               child: Column(
-        //                 children: <Widget>[
-        //                   FadeInImage.assetNetwork(
-        //                       placeholder: 'assets/movies.png',
-        //                       image: imageBaseUrl +
-        //                           state.trendingMovie[0].posterPath),
-        //                   Text(state.trendingMovie[0].voteAverage.toString()),
-        //                   Text(state.trendingMovie[0].title)
-        //                 ],
-        //               ))
-        //         ]),
-        //       )
-        //     ],
-        //   ),
-        // );
         default:
           return const Center(
             child: CircularProgressIndicator(),
           );
-      }
+      } */
     });
   }
 }

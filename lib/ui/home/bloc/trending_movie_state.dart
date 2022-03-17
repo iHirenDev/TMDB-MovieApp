@@ -4,6 +4,13 @@ part of 'trending_movie_bloc.dart';
 
 enum TrendingMovieStatus { initial, loading, success, failure }
 
+extension TrendinMovieStatusX on TrendingMovieStatus {
+  bool get isInitial => this == TrendingMovieStatus.initial;
+  bool get isLoading => this == TrendingMovieStatus.loading;
+  bool get isSuceess => this == TrendingMovieStatus.success;
+  bool get isFailure => this == TrendingMovieStatus.failure;
+}
+
 class TrendingMovieState extends Equatable {
   const TrendingMovieState(
       {this.status = TrendingMovieStatus.initial,

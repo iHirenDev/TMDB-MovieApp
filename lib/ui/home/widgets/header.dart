@@ -31,23 +31,36 @@ class Header extends StatelessWidget {
             child: Column(
               // ignore: prefer_const_literals_to_create_immutables
               children: <Widget>[
-                SizedBox(
-                  height: 40.0,
-                ),
-                SizedBox(
-                  width: size.width - kDefaultPadding * 2,
-                  child: Text(
-                    'Explore your favourite movies and shows',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                Text(
+                  'Explore your favourite movies and shows',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
                   ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                Spacer(),
+                // SizedBox(
+                //   height: 40.0,
+                // ),
+                // SizedBox(
+                //  // height: 20,
+                //   width: size.width - kDefaultPadding * 2,
+                //   child: Text(
+                //     'Explore your favourite movies and shows',
+                //     textAlign: TextAlign.center,
+                //     style: TextStyle(
+                //       color: Colors.white,
+                //       fontWeight: FontWeight.bold,
+                //       fontSize: 24,
+                //     ),
+                //     maxLines: 2,
+                //     overflow: TextOverflow.ellipsis,
+                //   ),
+                // ),
+                //Spacer(),
               ],
             ),
           ),
