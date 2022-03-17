@@ -1,6 +1,6 @@
-# flutter_bloc_demo
+# FlutterBlocDemo
 
-A new Flutter project.
+A Flutter application showcasing the flutter_bloc package using TMDB API.
 
 ## Getting Started
 
