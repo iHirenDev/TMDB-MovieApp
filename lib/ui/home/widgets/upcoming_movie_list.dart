@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_demo/ui/home/bloc/upcoming_movie_bloc.dart';
 import 'package:flutter_bloc_demo/ui/home/widgets/movies_list.dart';
+import 'package:flutter_bloc_demo/ui/home/widgets/shimmer_effect_list.dart';
 
 class UpcomingMovieList extends StatelessWidget {
   const UpcomingMovieList({Key? key}) : super(key: key);
@@ -16,7 +17,8 @@ class UpcomingMovieList extends StatelessWidget {
         return state.status.isSuceess
             ? MoviesList(movie: state.upcomingMovie, size: size)
             : state.status.isLoading
-                ? Center(child: CircularProgressIndicator())
+                ? SizedBox(
+                    height: size.height * 0.37, child: ShimmerEffectList())
                 : Center(
                     child: SizedBox(),
                   );

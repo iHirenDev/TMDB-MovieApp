@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_demo/helper/shimmer_effect.dart';
 import 'package:flutter_bloc_demo/ui/home/bloc/trending_movie_bloc.dart';
 import 'package:flutter_bloc_demo/ui/home/widgets/movies_list.dart';
+import 'package:flutter_bloc_demo/ui/home/widgets/shimmer_effect_list.dart';
 
 class MovieCardList extends StatelessWidget {
   const MovieCardList({Key? key}) : super(key: key);
@@ -16,7 +18,7 @@ class MovieCardList extends StatelessWidget {
       return state.status.isSuceess
           ? MoviesList(movie: state.trendingMovie, size: size)
           : state.status.isLoading
-              ? Center(child: CircularProgressIndicator())
+              ? SizedBox(height: size.height * 0.37, child: ShimmerEffectList())
               : state.status.isFailure
                   ? Center(child: Text('Failed to fetch movies'))
                   : SizedBox();

@@ -10,7 +10,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: kDefaultPadding * 2.5),
+      margin: EdgeInsets.only(bottom: kDefaultPadding),
       height: size.height * 0.2,
       child: Stack(
         children: <Widget>[
@@ -42,25 +42,6 @@ class Header extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                // SizedBox(
-                //   height: 40.0,
-                // ),
-                // SizedBox(
-                //  // height: 20,
-                //   width: size.width - kDefaultPadding * 2,
-                //   child: Text(
-                //     'Explore your favourite movies and shows',
-                //     textAlign: TextAlign.center,
-                //     style: TextStyle(
-                //       color: Colors.white,
-                //       fontWeight: FontWeight.bold,
-                //       fontSize: 24,
-                //     ),
-                //     maxLines: 2,
-                //     overflow: TextOverflow.ellipsis,
-                //   ),
-                // ),
-                //Spacer(),
               ],
             ),
           ),
@@ -88,7 +69,7 @@ class Header extends StatelessWidget {
                         child: TextField(
                       onChanged: (value) {},
                       decoration: InputDecoration(
-                          hintText: 'Search Movies',
+                          hintText: 'Search Movies and TV shows',
                           hintStyle:
                               TextStyle(color: kPrimaryColor.withOpacity(0.5)),
                           enabledBorder: InputBorder.none,

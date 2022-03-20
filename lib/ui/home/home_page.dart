@@ -43,35 +43,44 @@ class HomePage extends StatelessWidget {
                     ..add(FetchUpcomingMovie()),
                 ),
               ],
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Header(size: size),
-                    Padding(
-                      padding: const EdgeInsets.only(left: kDefaultPadding),
-                      child: Text(
-                        'Trending Movies',
-                        style: TextStyle(
-                            color: kTextColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24),
+              child: Column(
+                children: [
+                  Header(size: size),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          //Header(size: size),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: kDefaultPadding),
+                            child: Text(
+                              'Trending Movies',
+                              style: TextStyle(
+                                  color: kTextColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24),
+                            ),
+                          ),
+                          MovieCardList(),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: kDefaultPadding),
+                            child: Text(
+                              'Upcoming Movies',
+                              style: TextStyle(
+                                  color: kTextColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24),
+                            ),
+                          ),
+                          UpcomingMovieList()
+                        ],
                       ),
                     ),
-                    MovieCardList(),
-                    Padding(
-                      padding: const EdgeInsets.only(left: kDefaultPadding),
-                      child: Text(
-                        'Upcoming Movies',
-                        style: TextStyle(
-                            color: kTextColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24),
-                      ),
-                    ),
-                    UpcomingMovieList()
-                  ],
-                ),
+                  ),
+                ],
               ),
             )));
   }

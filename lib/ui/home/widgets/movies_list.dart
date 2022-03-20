@@ -15,7 +15,7 @@ class MoviesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: size.height * 0.4,
+      height: size.height * 0.37,
       child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
@@ -34,6 +34,7 @@ class MoviesList extends StatelessWidget {
               child: Stack(
                 children: <Widget>[
                   FadeInImage.assetNetwork(
+                      height: size.height * 0.35,
                       width: size.width * 0.47,
                       fit: BoxFit.fill,
                       placeholder: 'assets/movies.png',
