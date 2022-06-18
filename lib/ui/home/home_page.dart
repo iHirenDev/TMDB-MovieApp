@@ -4,15 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_demo/helper/constants.dart';
 import 'package:flutter_bloc_demo/repository/apiservices/trending_movie_api.dart';
-import 'package:flutter_bloc_demo/repository/apiservices/upcoming_movies_api.dart';
 import 'package:flutter_bloc_demo/repository/models/trending_movie.dart';
 import 'package:flutter_bloc_demo/repository/movie_repository.dart';
-import 'package:flutter_bloc_demo/ui/home/bloc/trending_movie_bloc.dart';
+import 'package:flutter_bloc_demo/ui/home/bloc/TrendingMovies/trending_movie_bloc.dart';
 import 'package:flutter_bloc_demo/ui/home/widgets/header.dart';
 import 'package:flutter_bloc_demo/ui/home/widgets/movie_card_list.dart';
 import 'package:flutter_bloc_demo/ui/home/widgets/upcoming_movie_list.dart';
 
-import 'bloc/upcoming_movie_bloc.dart';
+import 'bloc/UpcomingMovies/upcoming_movie_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

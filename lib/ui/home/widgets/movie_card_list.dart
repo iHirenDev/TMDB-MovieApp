@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_demo/helper/shimmer_effect.dart';
-import 'package:flutter_bloc_demo/ui/home/bloc/trending_movie_bloc.dart';
+import 'package:flutter_bloc_demo/ui/home/bloc/TrendingMovies/trending_movie_bloc.dart';
 import 'package:flutter_bloc_demo/ui/home/widgets/movies_list.dart';
 import 'package:flutter_bloc_demo/ui/home/widgets/shimmer_effect_list.dart';
 

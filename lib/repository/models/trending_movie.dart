@@ -15,7 +15,7 @@ class TrendingMovie {
   });
 
   int page;
-  List<Result> results;
+  List<TredndingMovieResult> results;
   int totalPages;
   int totalResults;
 
@@ -26,8 +26,8 @@ class TrendingMovie {
 
   factory TrendingMovie.fromJson(Map<String, dynamic> json) => TrendingMovie(
         page: json["page"],
-        results:
-            List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
+        results: List<TredndingMovieResult>.from(
+            json["results"].map((x) => TredndingMovieResult.fromJson(x))),
         totalPages: json["total_pages"],
         totalResults: json["total_results"],
       );
@@ -40,8 +40,8 @@ class TrendingMovie {
       };
 }
 
-class Result {
-  Result({
+class TredndingMovieResult {
+  TredndingMovieResult({
     required this.title,
     required this.voteAverage,
     required this.id,
@@ -56,7 +56,7 @@ class Result {
     required this.originalTitle,
     required this.posterPath,
     required this.popularity,
-    required this.mediaType,
+    //  required this.mediaType,
   });
 
   String title;
@@ -73,13 +73,15 @@ class Result {
   String originalTitle;
   String posterPath;
   double popularity;
-  MediaType? mediaType;
+  // MediaType? mediaType;
 
-  factory Result.fromRawJson(String str) => Result.fromJson(json.decode(str));
+  factory TredndingMovieResult.fromRawJson(String str) =>
+      TredndingMovieResult.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory TredndingMovieResult.fromJson(Map<String, dynamic> json) =>
+      TredndingMovieResult(
         title: json["title"],
         voteAverage: json["vote_average"].toDouble(),
         id: json["id"],
@@ -94,7 +96,9 @@ class Result {
         originalTitle: json["original_title"],
         posterPath: json["poster_path"],
         popularity: json["popularity"].toDouble(),
-        mediaType: mediaTypeValues.map[json["media_type"]],
+        // mediaType: json["media_type"] == null
+        //     ? null
+        //     : mediaTypeValues.map[json["media_type"]],
       );
 
   Map<String, dynamic> toJson() => {
@@ -113,13 +117,14 @@ class Result {
         "original_title": originalTitle,
         "poster_path": posterPath,
         "popularity": popularity,
-        "media_type": mediaTypeValues.reverse[mediaType],
+        // "media_type":
+        //     mediaType == null ? null : mediaTypeValues.reverse[mediaType],
       };
 }
 
-enum MediaType { MOVIE }
+//enum MediaType { MOVIE }
 
-final mediaTypeValues = EnumValues({"movie": MediaType.MOVIE});
+//final mediaTypeValues = EnumValues({"movie": MediaType.MOVIE});
 
 enum OriginalLanguage { EN, KO, IT, NL }
 

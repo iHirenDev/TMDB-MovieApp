@@ -1,15 +1,19 @@
 import 'package:flutter_bloc_demo/repository/apiservices/trending_movie_api.dart';
-import 'package:flutter_bloc_demo/repository/apiservices/upcoming_movies_api.dart';
+import 'package:flutter_bloc_demo/repository/models/movie_details.dart';
 import 'package:flutter_bloc_demo/repository/models/trending_movie.dart';
+import 'package:flutter_bloc_demo/repository/models/upcoming_movie.dart';
 
 class MovieRepository {
   const MovieRepository({required this.trendingMovieAPI});
   final TrendingMovieAPI trendingMovieAPI;
   // final UpcomingMoviesAPI upcomingMoviesAPI;
 
-  Future<List<Result>> getTrendingMovies() async =>
+  Future<List<TredndingMovieResult>> getTrendingMovies() async =>
       trendingMovieAPI.getTrendingMovie();
 
-  Future<List<Result>> getUpcomingMovies() async =>
+  Future<List<TredndingMovieResult>> getUpcomingMovies() async =>
       trendingMovieAPI.getUpcomingMovies();
+
+  Future<MovieDetails> getMovieDetails(int movieId) async =>
+      trendingMovieAPI.getMovieDetails(movieId);
 }

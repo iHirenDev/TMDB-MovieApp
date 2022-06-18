@@ -3,6 +3,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc_demo/repository/models/trending_movie.dart';
+import 'package:flutter_bloc_demo/repository/models/upcoming_movie.dart';
 import 'package:flutter_bloc_demo/repository/movie_repository.dart';
 
 part 'upcoming_movie_event.dart';

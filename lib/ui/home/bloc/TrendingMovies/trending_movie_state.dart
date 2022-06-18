@@ -14,16 +14,17 @@ extension TrendinMovieStatusX on TrendingMovieStatus {
 class TrendingMovieState extends Equatable {
   const TrendingMovieState(
       {this.status = TrendingMovieStatus.initial,
-      this.trendingMovie = const <Result>[]});
+      this.trendingMovie = const <TredndingMovieResult>[]});
 
   final TrendingMovieStatus status;
-  final List<Result> trendingMovie;
+  final List<TredndingMovieResult> trendingMovie;
 
   @override
   List<Object> get props => [status, trendingMovie];
 
   TrendingMovieState copyWith(
-      {TrendingMovieStatus? status, List<Result>? trendingMovie}) {
+      {TrendingMovieStatus? status,
+      List<TredndingMovieResult>? trendingMovie}) {
     return TrendingMovieState(
       status: status ?? this.status,
       trendingMovie: trendingMovie ?? this.trendingMovie,

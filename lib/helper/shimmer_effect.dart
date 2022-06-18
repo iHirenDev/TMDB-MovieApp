@@ -15,9 +15,16 @@ class ShimmerEffect extends StatelessWidget {
       width: width,
       padding: const EdgeInsets.all(kDefaultPadding / 2),
       decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.2),
+          // color: Colors.black.withOpacity(0.2),
           borderRadius:
-              const BorderRadius.all(Radius.circular(kDefaultPadding))),
+              const BorderRadius.all(Radius.circular(kDefaultPadding)),
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Colors.black.withOpacity(0.08),
+                Colors.black.withOpacity(0.3)
+              ])),
     );
   }
 }
