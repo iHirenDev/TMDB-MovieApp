@@ -17,7 +17,11 @@ class ShimmerEffectList extends StatelessWidget {
         itemCount: 4,
         itemBuilder: (context, index) {
           return ShimmerEffect(
-              height: size.height * 0.35, width: size.width * 0.47);
+            height: size.height * 0.35,
+            width: size.width * 0.47,
+            cornerRadius: 10.0,
+            isCircle: false,
+          );
         },
         separatorBuilder: (BuildContext context, int index) {
           return SizedBox(

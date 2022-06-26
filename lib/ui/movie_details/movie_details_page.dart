@@ -7,6 +7,7 @@ import 'package:flutter_bloc_demo/repository/apiservices/trending_movie_api.dart
 import 'package:flutter_bloc_demo/repository/models/trending_movie.dart';
 import 'package:flutter_bloc_demo/repository/movie_repository.dart';
 import 'package:flutter_bloc_demo/ui/movie_details/bloc/movie_details_bloc.dart';
+import 'package:flutter_bloc_demo/ui/movie_details/widgets/movie_details_shimmer_effect_widget.dart';
 import 'package:flutter_bloc_demo/ui/movie_details/widgets/movie_details_widget.dart';
 import 'package:intl/intl.dart';
 
@@ -36,41 +37,19 @@ class MovieDetailsPage extends StatelessWidget {
                           child: MovieDetailsWidget(movie: state.movieDetails!),
                         )
                       : state.status.isLoading
-                          ? Center(child: CircularProgressIndicator())
+                          ? MovieDetailsShimmerEffectWidget()
                           : state.status.isFailure
                               ? Center(
                                   child: Text('Failed to load movie details'))
                               : SizedBox();
                 },
               )),
-        )
+        ));
+  }
 
-        /*SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Image.network(
-                  kImageBaseUrl + movie.posterPath,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Ratings: ' + movie.voteAverage.toString()),
-                    Text('Release Date: ' +
-                        DateFormat('dd/MM/yyyy').format(movie.releaseDate)),
-                    Text(movie.genreIds[0].toString())
-                  ],
-                )
-              ],
-            ),
-            Text(movie.overview)
-          ],
-        ),
-      ),*/
-        );
+  _delayedFunction() {
+    Future.delayed(Duration(milliseconds: 300), () {
+      MovieDetailsShimmerEffectWidget();
+    });
   }
 }
