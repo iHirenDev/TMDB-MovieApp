@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Bloc Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+          fontFamily: 'Source Sans Pro',
           primaryColor: kPrimaryColor,
           visualDensity: VisualDensity.adaptivePlatformDensity),
       home: HomePage(),

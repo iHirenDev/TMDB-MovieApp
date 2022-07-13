@@ -37,7 +37,7 @@ class Header extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontSize: 26,
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,

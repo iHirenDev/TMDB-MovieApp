@@ -58,7 +58,7 @@ class MovieDetailsPage extends StatelessWidget {
                         style: TextStyle(
                             color: kTextColor,
                             fontWeight: FontWeight.bold,
-                            fontSize: 24),
+                            fontSize: 28),
                       ),
                     ),
                     MovieCastsWidget(),
@@ -69,7 +69,7 @@ class MovieDetailsPage extends StatelessWidget {
                         style: TextStyle(
                             color: kTextColor,
                             fontWeight: FontWeight.bold,
-                            fontSize: 24),
+                            fontSize: 28),
                       ),
                     ),
                     SimilarMoviesWidget()

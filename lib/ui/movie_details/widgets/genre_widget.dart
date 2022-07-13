@@ -31,7 +31,8 @@ class GenreWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(4.0),
                       child: Text(
                         genres![index].name!,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     )),
               )

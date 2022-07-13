@@ -30,19 +30,23 @@ class _MovieDescriptionWidgetState extends State<MovieDescriptionWidget>
               widget.description,
               softWrap: true,
               overflow: TextOverflow.clip,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ),
         ),
         widget.isExpanded
             ? TextButton(
                 onPressed: () => setState(() => widget.isExpanded = false),
-                child: Text('read less <<<'))
+                child: Text(
+                  'read less <<<',
+                  style: TextStyle(fontSize: 18),
+                ))
             : widget.description.length < 200
                 ? SizedBox()
                 : TextButton(
                     onPressed: () => setState(() => widget.isExpanded = true),
-                    child: Text('read more >>>'))
+                    child:
+                        Text('read more >>>', style: TextStyle(fontSize: 18)))
       ],
     );
   }

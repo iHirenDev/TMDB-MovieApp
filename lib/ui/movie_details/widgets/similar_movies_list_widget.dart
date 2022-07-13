@@ -55,7 +55,7 @@ class SimilarMoviesListWidget extends StatelessWidget {
                         maxLines: 2,
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 18,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -63,6 +63,7 @@ class SimilarMoviesListWidget extends StatelessWidget {
                       top: 2,
                       right: 2,
                       child: CircleAvatar(
+                        radius: 24,
                         backgroundColor: kTextColor,
                         child: Column(
                           children: <Widget>[
@@ -76,7 +77,7 @@ class SimilarMoviesListWidget extends StatelessWidget {
                                     .toString()
                                     .substring(0, 3),
                                 style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white)),
                           ],

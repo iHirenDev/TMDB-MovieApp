@@ -20,23 +20,25 @@ class MovieCastsListWidget extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: movieCasts.length,
           itemBuilder: (context, index) {
-            return Column(
-              children: <Widget>[
-                //Text(kImageBaseUrl + movieCasts[index].profilePath!),
-                CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 70,
-                    foregroundImage: movieCasts[index].profilePath == null
-                        ? NetworkImage(
-                            'https://cdn4.iconfinder.com/data/icons/evil-icons-user-interface/64/avatar-512.png')
-                        : NetworkImage(
-                            kImageBaseUrl + movieCasts[index].profilePath!)),
-                Text(
-                  movieCasts[index].name,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(movieCasts[index].character)
-              ],
+            return Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                children: <Widget>[
+                  //Text(kImageBaseUrl + movieCasts[index].profilePath!),
+                  CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 70,
+                      foregroundImage: movieCasts[index].profilePath == null
+                          ? NetworkImage(
+                              'https://cdn4.iconfinder.com/data/icons/evil-icons-user-interface/64/avatar-512.png')
+                          : NetworkImage(
+                              kImageBaseUrl + movieCasts[index].profilePath!)),
+                  Text(
+                    movieCasts[index].name,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             );
           },
         ),

@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
                               style: TextStyle(
                                   color: kTextColor,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 24),
+                                  fontSize: 28),
                             ),
                           ),
                           MovieCardList(),
@@ -71,7 +71,7 @@ class HomePage extends StatelessWidget {
                               style: TextStyle(
                                   color: kTextColor,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 24),
+                                  fontSize: 28),
                             ),
                           ),
                           UpcomingMovieList()
