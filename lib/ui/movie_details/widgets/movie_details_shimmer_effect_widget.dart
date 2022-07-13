@@ -49,46 +49,57 @@ class MovieDetailsShimmerEffectWidget extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: <Widget>[
-              Column(
-                children: [
-                  ShimmerEffect(
-                      height: 90, width: 90, cornerRadius: 0, isCircle: true),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  ShimmerEffect(
-                      height: 30, width: 120, cornerRadius: 10, isCircle: false)
-                ],
-              ),
-              Expanded(child: SizedBox()),
-              Column(
-                children: [
-                  ShimmerEffect(
-                      height: 90, width: 90, cornerRadius: 0, isCircle: true),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  ShimmerEffect(
-                      height: 30, width: 120, cornerRadius: 10, isCircle: false)
-                ],
-              ),
-              Expanded(child: SizedBox()),
-              Column(
-                children: [
-                  ShimmerEffect(
-                      height: 90, width: 90, cornerRadius: 0, isCircle: true),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  ShimmerEffect(
-                      height: 30, width: 120, cornerRadius: 10, isCircle: false)
-                ],
-              ),
-            ],
-          ),
+          child: RowShimmerWidget(),
         )
+      ],
+    );
+  }
+}
+
+class RowShimmerWidget extends StatelessWidget {
+  const RowShimmerWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Column(
+          children: [
+            ShimmerEffect(
+                height: 90, width: 90, cornerRadius: 0, isCircle: true),
+            SizedBox(
+              height: 10,
+            ),
+            ShimmerEffect(
+                height: 30, width: 120, cornerRadius: 10, isCircle: false)
+          ],
+        ),
+        Expanded(child: SizedBox()),
+        Column(
+          children: [
+            ShimmerEffect(
+                height: 90, width: 90, cornerRadius: 0, isCircle: true),
+            SizedBox(
+              height: 10,
+            ),
+            ShimmerEffect(
+                height: 30, width: 120, cornerRadius: 10, isCircle: false)
+          ],
+        ),
+        Expanded(child: SizedBox()),
+        Column(
+          children: [
+            ShimmerEffect(
+                height: 90, width: 90, cornerRadius: 0, isCircle: true),
+            SizedBox(
+              height: 10,
+            ),
+            ShimmerEffect(
+                height: 30, width: 120, cornerRadius: 10, isCircle: false)
+          ],
+        ),
       ],
     );
   }

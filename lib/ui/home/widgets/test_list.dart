@@ -41,13 +41,13 @@ class TestList extends StatelessWidget {
                         width: size.width * 0.47,
                         fit: BoxFit.fill,
                         placeholder: 'assets/movies.png',
-                        image: kImageBaseUrl + movie[index].posterPath),
+                        image: kImageBaseUrl + movie[index].posterPath!),
                     Positioned(
                       bottom: 3,
                       left: 3,
                       right: 3,
                       child: Text(
-                        movie[index].title,
+                        movie[index].title!,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: TextStyle(

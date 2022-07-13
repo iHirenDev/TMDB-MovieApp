@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
                             padding:
                                 const EdgeInsets.only(left: kDefaultPadding),
                             child: Text(
-                              'Upcoming Movies',
+                              'Popular Movies',
                               style: TextStyle(
                                   color: kTextColor,
                                   fontWeight: FontWeight.bold,

@@ -1,4 +1,5 @@
 import 'package:flutter_bloc_demo/repository/apiservices/trending_movie_api.dart';
+import 'package:flutter_bloc_demo/repository/models/movie_casts.dart';
 import 'package:flutter_bloc_demo/repository/models/movie_details.dart';
 import 'package:flutter_bloc_demo/repository/models/trending_movie.dart';
 import 'package:flutter_bloc_demo/repository/models/upcoming_movie.dart';
@@ -16,4 +17,10 @@ class MovieRepository {
 
   Future<MovieDetails> getMovieDetails(int movieId) async =>
       trendingMovieAPI.getMovieDetails(movieId);
+
+  Future<List<Cast>> getMovieCasts(int movieId) async =>
+      trendingMovieAPI.getMovieCasts(movieId);
+
+  Future<List<TredndingMovieResult>> getSimilarMovies(int movieId) async =>
+      trendingMovieAPI.getSimilarMovies(movieId);
 }

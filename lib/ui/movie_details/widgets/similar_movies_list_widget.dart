@@ -1,28 +1,24 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_demo/repository/models/upcoming_movie.dart';
+import 'package:flutter_bloc_demo/helper/constants.dart';
+import 'package:flutter_bloc_demo/repository/models/trending_movie.dart';
 import 'package:flutter_bloc_demo/ui/movie_details/movie_details_page.dart';
 
-import '../../../helper/constants.dart';
-import '../../../repository/models/trending_movie.dart';
-
-class MoviesList extends StatelessWidget {
-  const MoviesList({Key? key, required this.movie, required this.size})
+class SimilarMoviesListWidget extends StatelessWidget {
+  const SimilarMoviesListWidget({Key? key, required this.similarMovie})
       : super(key: key);
 
-  final List<TredndingMovieResult> movie;
-
-  final Size size;
-
+  final List<TredndingMovieResult> similarMovie;
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SizedBox(
       height: size.height * 0.37,
       child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          itemCount: movie.length,
+          itemCount: similarMovie.length,
           itemBuilder: (context, index) {
             return InkWell(
               child: Container(
@@ -44,7 +40,7 @@ class MoviesList extends StatelessWidget {
                     //     placeholder: 'assets/movies.png',
                     //     image: kImageBaseUrl + movie[index].posterPath),
                     Image.network(
-                      kImageBaseUrl + movie[index].posterPath,
+                      kImageBaseUrl + similarMovie[index].posterPath,
                       height: size.height * 0.35,
                       width: size.width * 0.47,
                       fit: BoxFit.cover,
@@ -54,7 +50,7 @@ class MoviesList extends StatelessWidget {
                       left: 3,
                       right: 3,
                       child: Text(
-                        movie[index].title,
+                        similarMovie[index].title,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: TextStyle(
@@ -75,7 +71,7 @@ class MoviesList extends StatelessWidget {
                               color: Colors.yellow[900],
                             ),
                             Text(
-                                movie[index]
+                                similarMovie[index]
                                     .voteAverage
                                     .toString()
                                     .substring(0, 3),
@@ -93,7 +89,7 @@ class MoviesList extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
-                        MovieDetailsPage(movie: movie[index])));
+                        MovieDetailsPage(movie: similarMovie[index])));
               },
             );
           }),
