@@ -8,4 +8,4 @@ Grab your API key from [TMDB](https://www.themoviedb.org/) and replace kAPIKey.
 
 # Demo
 
-![demo](TMDB2.gif)
+![demo](TMDB.gif)
