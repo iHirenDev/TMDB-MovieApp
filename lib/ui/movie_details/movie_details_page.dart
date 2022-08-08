@@ -46,56 +46,39 @@ class MovieDetailsPage extends StatelessWidget {
                         movieRepository: context.read<MovieRepository>())
                       ..add(GetSimilarMovies(movieId: movie.id)))
               ],
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    MovieDetailsHeader(),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Cast',
-                        style: TextStyle(
-                            color: kTextColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 28),
+              child: SafeArea(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      MovieDetailsHeader(),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Cast',
+                          style: TextStyle(
+                              color: kTextColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 28),
+                        ),
                       ),
-                    ),
-                    MovieCastsWidget(),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Similar Movies',
-                        style: TextStyle(
-                            color: kTextColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 28),
+                      MovieCastsWidget(),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Similar Movies',
+                          style: TextStyle(
+                              color: kTextColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 28),
+                        ),
                       ),
-                    ),
-                    SimilarMoviesWidget()
-                  ],
+                      SimilarMoviesWidget()
+                    ],
+                  ),
                 ),
               ),
-            )
-            // BlocProvider(
-            //     create: (context) => MovieDetailsBloc(
-            //         movieRepository: context.read<MovieRepository>())
-            //       ..add(SelectMovie(selectedId: movie.id)),
-            //     child: BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
-            //       builder: (context, state) {
-            //         return state.status.isSuceess
-            //             ? Center(
-            //                 child: MovieDetailsWidget(movie: state.movieDetails!),
-            //               )
-            //             : state.status.isLoading
-            //                 ? MovieDetailsShimmerEffectWidget()
-            //                 : state.status.isFailure
-            //                     ? Center(
-            //                         child: Text('Failed to load movie details'))
-            //                     : SizedBox();
-            //       },
-            //     )),
-            ));
+            )));
   }
 
   _delayedFunction() {

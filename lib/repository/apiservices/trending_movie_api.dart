@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_bloc_demo/repository/models/movie_casts.dart';
 import 'package:flutter_bloc_demo/repository/models/movie_details.dart';
+import 'package:flutter_bloc_demo/repository/models/search_movie.dart';
 import 'package:flutter_bloc_demo/repository/models/trending_movie.dart';
 import 'package:flutter_bloc_demo/repository/models/upcoming_movie.dart';
 import 'package:http/http.dart' as http;
@@ -27,16 +28,11 @@ class TrendingMovieAPI {
   Future<List<TredndingMovieResult>> getUpcomingMovies() async {
     const String url = '$kBaseUrl/movie/popular?api_key=$kApiKey';
 
-// https://api.themoviedb.org/3/movie/popular?api_key=9e28f86920815f76754191dddf003442
-    const String newUrl = '$kBaseUrl/trending/movie/day?api_key=$kApiKey';
-
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
-      //print(json);
       final upcomingMovies = TrendingMovie.fromJson(json);
-      // print(upcomingMovies.results[0].originalTitle);
       return upcomingMovies.results;
     } else {
       throw Exception('Failed to fetch movies');
@@ -64,7 +60,6 @@ class TrendingMovieAPI {
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
       final movieCasts = MovieCasts.fromJson(json);
-      print(movieCasts.id);
       return movieCasts.cast;
     } else {
       throw Exception('Failed to fetch movie casts');
@@ -83,6 +78,19 @@ class TrendingMovieAPI {
       return similarMovies.results;
     } else {
       throw Exception('Failed to fetch movies');
+    }
+  }
+
+  Future<List<SearchMovieResults>> searchMovies(String query) async {
+    String url = '$kBaseUrl/search/movie?api_key=$kApiKey&query=$query';
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body);
+      final searchedMovies = SearchMovie.fromJson(json);
+      return searchedMovies.results!;
+    } else {
+      throw Exception('Failed to search movies');
     }
   }
 }

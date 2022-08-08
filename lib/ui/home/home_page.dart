@@ -9,6 +9,7 @@ import 'package:flutter_bloc_demo/repository/movie_repository.dart';
 import 'package:flutter_bloc_demo/ui/home/bloc/TrendingMovies/trending_movie_bloc.dart';
 import 'package:flutter_bloc_demo/ui/home/widgets/header.dart';
 import 'package:flutter_bloc_demo/ui/home/widgets/movie_card_list.dart';
+import 'package:flutter_bloc_demo/ui/home/widgets/movie_search_header.dart';
 import 'package:flutter_bloc_demo/ui/home/widgets/upcoming_movie_list.dart';
 
 import 'bloc/UpcomingMovies/upcoming_movie_bloc.dart';
@@ -42,44 +43,46 @@ class HomePage extends StatelessWidget {
                     ..add(FetchUpcomingMovie()),
                 ),
               ],
-              child: Column(
-                children: [
-                  Header(size: size),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          //Header(size: size),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: kDefaultPadding),
-                            child: Text(
-                              'Trending Movies',
-                              style: TextStyle(
-                                  color: kTextColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 28),
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    MovieSearchHeader(size: size),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            //Header(size: size),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: kDefaultPadding),
+                              child: Text(
+                                'Trending Movies',
+                                style: TextStyle(
+                                    color: kTextColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 28),
+                              ),
                             ),
-                          ),
-                          MovieCardList(),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: kDefaultPadding),
-                            child: Text(
-                              'Popular Movies',
-                              style: TextStyle(
-                                  color: kTextColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 28),
+                            MovieCardList(),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: kDefaultPadding),
+                              child: Text(
+                                'Popular Movies',
+                                style: TextStyle(
+                                    color: kTextColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 28),
+                              ),
                             ),
-                          ),
-                          UpcomingMovieList()
-                        ],
+                            UpcomingMovieList()
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             )));
   }

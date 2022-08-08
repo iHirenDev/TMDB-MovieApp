@@ -36,14 +36,3 @@ class ShimmerEffect extends StatelessWidget {
     );
   }
 }
-
-class ShimmerEffect2 extends StatelessWidget {
-  const ShimmerEffect2({Key? key, required this.widget}) : super(key: key);
-
-  final Widget widget;
-
-  @override
-  Widget build(BuildContext context) {
-    return widget;
-  }
-}

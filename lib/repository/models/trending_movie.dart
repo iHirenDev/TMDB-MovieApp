@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final trendingMovie = trendingMovieFromJson(jsonString);
-
 // ignore_for_file: constant_identifier_names
 
 import 'dart:convert';
@@ -88,7 +84,8 @@ class TredndingMovieResult {
         overview: json["overview"],
         releaseDate: DateTime.parse(json["release_date"]),
         adult: json["adult"],
-        backdropPath: json["backdrop_path"],
+        backdropPath:
+            json['backdrop_path'] == 'null' ? null : json['backdrop_path'],
         voteCount: json["vote_count"],
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         video: json["video"],
