@@ -97,7 +97,8 @@ class SearchMovieResults {
         posterPath: json["poster_path"] == null
             ? '/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg'
             : json["poster_path"],
-        releaseDate: json["release_date"] == null ? null : json["release_date"],
+        releaseDate:
+            json["release_date"] == "" ? '1988-09-07' : json["release_date"],
         title: json["title"] == null ? null : json["title"],
         video: json["video"] == null ? null : json["video"],
         voteAverage: json["vote_average"] == null
