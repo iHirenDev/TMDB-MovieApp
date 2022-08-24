@@ -89,8 +89,10 @@ class SimilarMoviesListWidget extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        MovieDetailsPage(movie: similarMovie[index])));
+                    builder: (context) => MovieDetailsPage(
+                          id: similarMovie[index].id,
+                          movieTitle: similarMovie[index].title,
+                        )));
               },
             );
           }),

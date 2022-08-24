@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_if_null_operators
+
 class MovieDetails {
   final bool? adult;
   final String? backdropPath;
@@ -68,7 +70,9 @@ class MovieDetails {
         originalTitle = json['original_title'] as String?,
         overview = json['overview'] as String?,
         popularity = json['popularity'] as double?,
-        posterPath = json['poster_path'] as String?,
+        posterPath = json['poster_path'] == null
+            ? '/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg'
+            : json['poster_path'],
         productionCompanies = (json['production_companies'] as List?)
             ?.map((dynamic e) =>
                 ProductionCompanies.fromJson(e as Map<String, dynamic>))

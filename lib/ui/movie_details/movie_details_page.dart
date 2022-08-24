@@ -17,15 +17,20 @@ import 'package:flutter_bloc_demo/ui/movie_details/widgets/similar_movies_widget
 import 'package:intl/intl.dart';
 
 class MovieDetailsPage extends StatelessWidget {
-  const MovieDetailsPage({Key? key, required this.movie}) : super(key: key);
+  const MovieDetailsPage({Key? key, required this.id, required this.movieTitle})
+      : super(key: key);
 
-  final TredndingMovieResult movie;
+  final int id;
+  final String movieTitle;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(movie.title),
+          title: Text(
+            movieTitle,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+          ),
           backgroundColor: kPrimaryColor,
         ),
         body: RepositoryProvider(
@@ -36,15 +41,15 @@ class MovieDetailsPage extends StatelessWidget {
                 BlocProvider(
                     create: (context) => MovieDetailsBloc(
                         movieRepository: context.read<MovieRepository>())
-                      ..add(SelectMovie(selectedId: movie.id))),
+                      ..add(SelectMovie(selectedId: id))),
                 BlocProvider(
                     create: (context) => MovieCastsBloc(
                         movieRepository: context.read<MovieRepository>())
-                      ..add(GetMovieCasts(movieId: movie.id))),
+                      ..add(GetMovieCasts(movieId: id))),
                 BlocProvider(
                     create: (context) => SimilarMoviesBloc(
                         movieRepository: context.read<MovieRepository>())
-                      ..add(GetSimilarMovies(movieId: movie.id)))
+                      ..add(GetSimilarMovies(movieId: id)))
               ],
               child: SafeArea(
                 child: SingleChildScrollView(

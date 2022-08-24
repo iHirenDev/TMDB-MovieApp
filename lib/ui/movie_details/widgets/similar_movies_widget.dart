@@ -15,7 +15,16 @@ class SimilarMoviesWidget extends StatelessWidget {
     return BlocBuilder<SimilarMoviesBloc, SimilarMoviesState>(
       builder: (context, state) {
         return state.status.isSuccess
-            ? SimilarMoviesListWidget(similarMovie: state.similarMovies)
+            ? state.similarMovies.isEmpty
+                ? SizedBox(
+                    height: 100,
+                    child: Center(
+                        child: Text(
+                      'Cannot find similar movies.',
+                      style: TextStyle(fontSize: 22),
+                    )),
+                  )
+                : SimilarMoviesListWidget(similarMovie: state.similarMovies)
             : state.status.isLoading
                 ? SizedBox(
                     height: size.height * 0.37, child: ShimmerEffectList())

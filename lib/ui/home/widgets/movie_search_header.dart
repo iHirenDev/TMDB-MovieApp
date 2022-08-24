@@ -78,8 +78,8 @@ class MovieSearchHeader extends StatelessWidget {
                                 child: MovieSearchPage(),
                                 type: PageTransitionType.size,
                                 alignment: Alignment.bottomCenter,
-                                reverseDuration: Duration(milliseconds: 300),
-                                duration: Duration(milliseconds: 400)));
+                                reverseDuration: Duration(milliseconds: 200),
+                                duration: Duration(milliseconds: 200)));
                         // Navigator.of(context).push(MaterialPageRoute(
                         //     builder: (context) => MovieSearchPage()));
                       },

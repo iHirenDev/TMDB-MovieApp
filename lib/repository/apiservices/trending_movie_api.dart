@@ -46,6 +46,7 @@ class TrendingMovieAPI {
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
       final movieDetails = MovieDetails.fromJson(json);
+      print('MovieID: ' + movieDetails.id.toString());
       return movieDetails;
     } else {
       throw Exception('Failed to fetch movies');
@@ -60,6 +61,7 @@ class TrendingMovieAPI {
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
       final movieCasts = MovieCasts.fromJson(json);
+      print('MovieCasts: ' + movieCasts.cast.length.toString());
       return movieCasts.cast;
     } else {
       throw Exception('Failed to fetch movie casts');

@@ -14,12 +14,23 @@ class MovieCastsWidget extends StatelessWidget {
     return BlocBuilder<MovieCastsBloc, MovieCastsState>(
       builder: (BuildContext context, state) {
         return state.status.isSuceess
-            ? MovieCastsListWidget(movieCasts: state.movieCasts)
+            ? state.movieCasts.isEmpty
+                ? SizedBox(
+                    height: 100,
+                    child: Center(
+                        child: Text(
+                      'Cannot find casts for this movie.',
+                      style: TextStyle(fontSize: 22),
+                    )),
+                  )
+                : MovieCastsListWidget(movieCasts: state.movieCasts)
             : state.status.isLoading
                 ? RowShimmerWidget()
                 : state.status.isFailure
                     ? Center(child: Text('Failed to fetch movie casts'))
-                    : SizedBox();
+                    : Center(
+                        child: Text('Something went wrong. Please try again.'),
+                      );
       },
     );
   }
