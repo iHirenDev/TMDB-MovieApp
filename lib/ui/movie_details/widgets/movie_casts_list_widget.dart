@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_if_null_operators
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_demo/helper/constants.dart';
@@ -15,7 +15,7 @@ class MovieCastsListWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(
-        height: 200,
+        height: 180,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: movieCasts.length,
@@ -24,15 +24,17 @@ class MovieCastsListWidget extends StatelessWidget {
               padding: const EdgeInsets.all(12.0),
               child: Column(
                 children: <Widget>[
-                  //Text(kImageBaseUrl + movieCasts[index].profilePath!),
-                  CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 70,
-                      foregroundImage: movieCasts[index].profilePath == null
-                          ? NetworkImage(
-                              'https://cdn4.iconfinder.com/data/icons/evil-icons-user-interface/64/avatar-512.png')
-                          : NetworkImage(
-                              kImageBaseUrl + movieCasts[index].profilePath!)),
+                  ClipOval(
+                    child: FadeInImage.assetNetwork(
+                      placeholder: 'assets/tmdb.png',
+                      image: movieCasts[index].profilePath == null
+                          ? 'https://cdn4.iconfinder.com/data/icons/evil-icons-user-interface/64/avatar-512.png'
+                          : kImageBaseUrl + movieCasts[index].profilePath!,
+                      height: 120,
+                      width: 120,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   Text(
                     movieCasts[index].name,
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
