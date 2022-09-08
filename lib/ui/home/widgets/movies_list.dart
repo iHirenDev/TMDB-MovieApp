@@ -37,18 +37,18 @@ class MoviesList extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(5.0))),
                 child: Stack(
                   children: <Widget>[
-                    // FadeInImage.assetNetwork(
-                    //     height: size.height * 0.35,
-                    //     width: size.width * 0.47,
-                    //     fit: BoxFit.cover,
-                    //     placeholder: 'assets/movies.png',
-                    //     image: kImageBaseUrl + movie[index].posterPath),
-                    Image.network(
-                      kImageBaseUrl + movie[index].posterPath,
-                      height: size.height * 0.35,
-                      width: size.width * 0.47,
-                      fit: BoxFit.cover,
-                    ),
+                    FadeInImage.assetNetwork(
+                        height: size.height * 0.35,
+                        width: size.width * 0.47,
+                        fit: BoxFit.cover,
+                        placeholder: 'assets/tmdb.png',
+                        image: kImageBaseUrl + movie[index].posterPath),
+                    // Image.network(
+                    //   kImageBaseUrl + movie[index].posterPath,
+                    //   height: size.height * 0.35,
+                    //   width: size.width * 0.47,
+                    //   fit: BoxFit.cover,
+                    // ),
                     Positioned(
                       bottom: 3,
                       left: 3,
