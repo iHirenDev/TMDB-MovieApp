@@ -14,6 +14,7 @@ import 'package:flutter_bloc_demo/ui/movie_details/widgets/movie_details_header.
 import 'package:flutter_bloc_demo/ui/movie_details/widgets/movie_details_shimmer_effect_widget.dart';
 import 'package:flutter_bloc_demo/ui/movie_details/widgets/movie_details_widget.dart';
 import 'package:flutter_bloc_demo/ui/movie_details/widgets/similar_movies_widget.dart';
+import 'package:flutter_bloc_demo/ui/movie_reviews/movie_reviews_page.dart';
 import 'package:intl/intl.dart';
 
 class MovieDetailsPage extends StatelessWidget {
@@ -30,6 +31,9 @@ class MovieDetailsPage extends StatelessWidget {
           title: Text(
             movieTitle,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
           ),
           backgroundColor: kPrimaryColor,
         ),
@@ -57,6 +61,9 @@ class MovieDetailsPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       MovieDetailsHeader(),
+                      Divider(
+                        thickness: 2,
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
@@ -68,6 +75,37 @@ class MovieDetailsPage extends StatelessWidget {
                         ),
                       ),
                       MovieCastsWidget(),
+                      Divider(
+                        thickness: 2,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: InkWell(
+                          child: Row(
+                            children: <Widget>[
+                              Text('Reviews',
+                                  style: TextStyle(
+                                      color: kTextColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 28)),
+                              Expanded(child: SizedBox()),
+                              Icon(
+                                Icons.chevron_right_sharp,
+                                size: 28,
+                              )
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  MovieReviewsPage(movieId: id),
+                            ));
+                          },
+                        ),
+                      ),
+                      Divider(
+                        thickness: 2,
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_bloc_demo/repository/models/movie_casts.dart';
 import 'package:flutter_bloc_demo/repository/models/movie_details.dart';
+import 'package:flutter_bloc_demo/repository/models/movie_reviews.dart';
 import 'package:flutter_bloc_demo/repository/models/search_movie.dart';
 import 'package:flutter_bloc_demo/repository/models/trending_movie.dart';
 import 'package:flutter_bloc_demo/repository/models/upcoming_movie.dart';
@@ -93,6 +94,21 @@ class TrendingMovieAPI {
       return searchedMovies.results!;
     } else {
       throw Exception('Failed to search movies');
+    }
+  }
+
+  Future<List<Reviews>> getReviews(int movieId) async {
+    String url = '$kBaseUrl/movie/$movieId/reviews?api_key=$kApiKey';
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body);
+
+      final movieReviews = MovieReviews.fromJson(json);
+
+      return movieReviews.results;
+    } else {
+      throw Exception('Failed to fetch movies');
     }
   }
 }
