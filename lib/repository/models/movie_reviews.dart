@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_new, unnecessary_this, prefer_if_null_operators, unnecessary_null_comparison
+
 class MovieReviews {
   MovieReviews({
     required this.id,

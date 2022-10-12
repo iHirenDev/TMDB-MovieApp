@@ -3,11 +3,13 @@
 import 'package:flutter/material.dart';
 
 class MovieDescriptionWidget extends StatefulWidget {
-  MovieDescriptionWidget({Key? key, required this.description})
+  MovieDescriptionWidget(
+      {Key? key, required this.textContent, required this.isReviews})
       : super(key: key);
 
-  final String description;
+  final String textContent;
   bool isExpanded = false;
+  final bool isReviews;
 
   @override
   State<MovieDescriptionWidget> createState() => _MovieDescriptionWidgetState();
@@ -22,31 +24,36 @@ class _MovieDescriptionWidgetState extends State<MovieDescriptionWidget>
       children: <Widget>[
         AnimatedSize(
           duration: Duration(milliseconds: 200),
-          child: ConstrainedBox(
-            constraints: widget.isExpanded
-                ? BoxConstraints()
-                : BoxConstraints(maxHeight: size.height * 0.22),
-            child: Text(
-              widget.description,
-              softWrap: true,
-              overflow: TextOverflow.clip,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          child: InkWell(
+            child: ConstrainedBox(
+              constraints: widget.isExpanded
+                  ? BoxConstraints()
+                  : widget.isReviews
+                      ? BoxConstraints(maxHeight: size.height * 0.1)
+                      : BoxConstraints(maxHeight: size.height * 0.22),
+              child: Text(
+                widget.textContent,
+                softWrap: true,
+                overflow: TextOverflow.clip,
+                textAlign: TextAlign.justify,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
             ),
+            onTap: () {
+              setState(() {
+                widget.isExpanded
+                    ? widget.isExpanded = false
+                    : widget.isExpanded = true;
+              });
+            },
           ),
         ),
         widget.isExpanded
-            ? TextButton(
-                onPressed: () => setState(() => widget.isExpanded = false),
-                child: Text(
-                  'read less <<<',
-                  style: TextStyle(fontSize: 18),
-                ))
-            : widget.description.length < 200
+            ? Text('')
+            : widget.textContent.length < 200
                 ? SizedBox()
-                : TextButton(
-                    onPressed: () => setState(() => widget.isExpanded = true),
-                    child:
-                        Text('read more >>>', style: TextStyle(fontSize: 18)))
+                : Text('.....',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
       ],
     );
   }

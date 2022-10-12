@@ -6,6 +6,7 @@ import 'package:flutter_bloc_demo/ui/home/widgets/movies_list.dart';
 import 'package:flutter_bloc_demo/ui/movie_details/widgets/genre_widget.dart';
 import 'package:flutter_bloc_demo/ui/movie_details/widgets/movie_description_widget.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 import '../../../helper/constants.dart';
 
@@ -43,7 +44,8 @@ class MovieDetailsWidget extends StatelessWidget {
                             SizedBox(
                               width: size.width - size.width * 0.38 - 24,
                               child: MovieDescriptionWidget(
-                                  description: movie.overview!),
+                                  textContent: movie.overview!,
+                                  isReviews: false),
                             )
                           ],
                         ),

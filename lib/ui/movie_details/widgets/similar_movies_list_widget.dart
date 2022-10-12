@@ -92,6 +92,7 @@ class SimilarMoviesListWidget extends StatelessWidget {
                     builder: (context) => MovieDetailsPage(
                           id: similarMovie[index].id,
                           movieTitle: similarMovie[index].title,
+                          ratings: similarMovie[index].voteAverage,
                         )));
               },
             );

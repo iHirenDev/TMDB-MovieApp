@@ -97,10 +97,9 @@ class TrendingMovieAPI {
     }
   }
 
-  Future<List<Reviews>> getReviews(int movieId) async {
+  Future<List<Reviews>> getReviewsforMovie(int movieId) async {
     String url = '$kBaseUrl/movie/$movieId/reviews?api_key=$kApiKey';
     final response = await http.get(Uri.parse(url));
-
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
 

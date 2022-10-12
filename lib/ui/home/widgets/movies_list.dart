@@ -96,6 +96,7 @@ class MoviesList extends StatelessWidget {
                     builder: (context) => MovieDetailsPage(
                           id: movie[index].id,
                           movieTitle: movie[index].title,
+                          ratings: movie[index].voteAverage,
                         )));
               },
             );

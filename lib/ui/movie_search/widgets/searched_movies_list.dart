@@ -72,6 +72,7 @@ class SearchedMovieList extends StatelessWidget {
                   builder: (context) => MovieDetailsPage(
                         id: searchedMovies[index].id,
                         movieTitle: searchedMovies[index].title,
+                        ratings: searchedMovies[index].voteAverage,
                       )));
             },
           );

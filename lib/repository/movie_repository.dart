@@ -30,5 +30,5 @@ class MovieRepository {
       trendingMovieAPI.searchMovies(query);
 
   Future<List<Reviews>> getMovieReviews(int movieId) async =>
-      trendingMovieAPI.getReviews(movieId);
+      trendingMovieAPI.getReviewsforMovie(movieId);
 }

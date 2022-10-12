@@ -18,11 +18,16 @@ import 'package:flutter_bloc_demo/ui/movie_reviews/movie_reviews_page.dart';
 import 'package:intl/intl.dart';
 
 class MovieDetailsPage extends StatelessWidget {
-  const MovieDetailsPage({Key? key, required this.id, required this.movieTitle})
+  const MovieDetailsPage(
+      {Key? key,
+      required this.id,
+      required this.movieTitle,
+      required this.ratings})
       : super(key: key);
 
   final int id;
   final String movieTitle;
+  final double ratings;
 
   @override
   Widget build(BuildContext context) {
@@ -97,9 +102,10 @@ class MovieDetailsPage extends StatelessWidget {
                           ),
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                                  MovieReviewsPage(movieId: id),
-                            ));
+                                builder: (context) => MovieReviewsPage(
+                                      movieId: id,
+                                      ratings: ratings,
+                                    )));
                           },
                         ),
                       ),
