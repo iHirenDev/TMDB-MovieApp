@@ -1,4 +1,4 @@
-# FlutterBlocDemo
+# TMDB-MovieApp
 
 A Flutter application showcasing the flutter_bloc package using [TMDB](https://www.themoviedb.org/) API.
 
