@@ -5,7 +5,7 @@ import 'package:flutter_bloc_demo/repository/models/movie_details.dart';
 import 'package:flutter_bloc_demo/repository/models/movie_reviews.dart';
 import 'package:flutter_bloc_demo/repository/models/search_movie.dart';
 import 'package:flutter_bloc_demo/repository/models/trending_movie.dart';
-import 'package:flutter_bloc_demo/repository/models/upcoming_movie.dart';
+import 'package:flutter_bloc_demo/repository/models/similar_movies.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_bloc_demo/helper/constants.dart';
 
@@ -27,7 +27,7 @@ class TrendingMovieAPI {
   }
 
   Future<List<TredndingMovieResult>> getUpcomingMovies() async {
-    const String url = '$kBaseUrl/movie/popular?api_key=$kApiKey';
+    const String url = '$kBaseUrl/movie/upcoming?api_key=$kApiKey';
 
     final response = await http.get(Uri.parse(url));
 
@@ -56,29 +56,27 @@ class TrendingMovieAPI {
 
   Future<List<Cast>> getMovieCasts(int movieId) async {
     String url = '$kBaseUrl/movie/$movieId/credits?api_key=$kApiKey';
-
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
       final movieCasts = MovieCasts.fromJson(json);
-      // print('MovieCasts: ' + movieCasts.cast.length.toString());
+      //print('MovieCasts: ' + movieCasts.cast.length.toString());
       return movieCasts.cast;
     } else {
       throw Exception('Failed to fetch movie casts');
     }
   }
 
-  Future<List<TredndingMovieResult>> getSimilarMovies(int movieId) async {
+  Future<List<SimilarMoviesResults>> getSimilarMovies(int movieId) async {
     String url = '$kBaseUrl/movie/$movieId/similar?api_key=$kApiKey';
     final response = await http.get(Uri.parse(url));
-
+    print(url);
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
-
-      final similarMovies = TrendingMovie.fromJson(json);
-
-      return similarMovies.results;
+      final similarMovies = SimilarMovies.fromJson(json);
+      print(similarMovies);
+      return similarMovies.results!;
     } else {
       throw Exception('Failed to fetch movies');
     }

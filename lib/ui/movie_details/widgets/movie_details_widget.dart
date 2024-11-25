@@ -68,9 +68,9 @@ class MovieDetailsWidget extends StatelessWidget {
                               movie.voteAverage.toString().substring(0, 3) +
                                   '/10',
                               style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              )),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: kTextColor)),
                         ],
                       ),
                       Expanded(child: SizedBox()),
@@ -83,7 +83,9 @@ class MovieDetailsWidget extends StatelessWidget {
                           ),
                           Text(_stringToDate(movie.releaseDate!),
                               style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold))
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: kTextColor))
                         ],
                       ),
                       Expanded(child: SizedBox()),
@@ -97,7 +99,9 @@ class MovieDetailsWidget extends StatelessWidget {
                           Text(
                             _minutesToHour(movie.runtime!),
                             style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: kTextColor),
                           )
                         ],
                       )

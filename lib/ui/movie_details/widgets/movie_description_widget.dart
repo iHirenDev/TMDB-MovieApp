@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../helper/constants.dart';
+
 class MovieDescriptionWidget extends StatefulWidget {
   MovieDescriptionWidget(
       {Key? key, required this.textContent, required this.isReviews})
@@ -21,39 +23,57 @@ class _MovieDescriptionWidgetState extends State<MovieDescriptionWidget>
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
         AnimatedSize(
           duration: Duration(milliseconds: 200),
-          child: InkWell(
-            child: ConstrainedBox(
-              constraints: widget.isExpanded
-                  ? BoxConstraints()
-                  : widget.isReviews
-                      ? BoxConstraints(maxHeight: size.height * 0.1)
-                      : BoxConstraints(maxHeight: size.height * 0.22),
-              child: Text(
-                widget.textContent,
-                softWrap: true,
-                overflow: TextOverflow.clip,
-                textAlign: TextAlign.justify,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
+          child: ConstrainedBox(
+            constraints: widget.isExpanded
+                ? BoxConstraints()
+                : widget.isReviews
+                    ? BoxConstraints(maxHeight: size.height * 0.1)
+                    : BoxConstraints(maxHeight: size.height * 0.22),
+            child: Text(
+              widget.textContent,
+              softWrap: true,
+              overflow: TextOverflow.clip,
+              textAlign: TextAlign.justify,
+              style: TextStyle(
+                  fontSize: 16, fontWeight: FontWeight.bold, color: kTextColor),
             ),
-            onTap: () {
-              setState(() {
-                widget.isExpanded
-                    ? widget.isExpanded = false
-                    : widget.isExpanded = true;
-              });
-            },
           ),
         ),
         widget.isExpanded
-            ? Text('')
+            ? InkWell(
+                child: Text('read less',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: kTextColor)),
+                onTap: (() {
+                  setState(() {
+                    widget.isExpanded
+                        ? widget.isExpanded = false
+                        : widget.isExpanded = true;
+                  });
+                }),
+              )
             : widget.textContent.length < 200
                 ? SizedBox()
-                : Text('.....',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
+                : InkWell(
+                    child: Text('read more',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: kTextColor)),
+                    onTap: (() {
+                      setState(() {
+                        widget.isExpanded
+                            ? widget.isExpanded = false
+                            : widget.isExpanded = true;
+                      });
+                    }),
+                  )
       ],
     );
   }

@@ -24,12 +24,14 @@ class MovieSearchPage extends StatelessWidget {
           child: BlocProvider(
             create: (context) => MovieSearchBloc(
                 movieRepository: context.read<MovieRepository>()),
-            child: Column(
-              children: <Widget>[
-                Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: MovieSearchFieldWidget())
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: MovieSearchFieldWidget())
+                ],
+              ),
             ),
           ),
         ));

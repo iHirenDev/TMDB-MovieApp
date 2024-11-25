@@ -6,6 +6,8 @@ import 'package:flutter_bloc_demo/ui/movie_details/bloc/MovieCasts/movie_casts_b
 import 'package:flutter_bloc_demo/ui/movie_details/widgets/movie_casts_list_widget.dart';
 import 'package:flutter_bloc_demo/ui/movie_details/widgets/movie_details_shimmer_effect_widget.dart';
 
+import '../../../helper/constants.dart';
+
 class MovieCastsWidget extends StatelessWidget {
   const MovieCastsWidget({Key? key}) : super(key: key);
 
@@ -20,7 +22,7 @@ class MovieCastsWidget extends StatelessWidget {
                     child: Center(
                         child: Text(
                       'Cannot find casts for this movie.',
-                      style: TextStyle(fontSize: 22),
+                      style: TextStyle(fontSize: 22, color: kTextColor),
                     )),
                   )
                 : MovieCastsListWidget(movieCasts: state.movieCasts)

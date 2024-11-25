@@ -14,72 +14,79 @@ class SearchedMovieList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
-      child: ListView.builder(
-        itemCount: searchedMovies.length,
-        itemBuilder: (context, index) {
-          return InkWell(
-            child: Card(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Image.network(
-                    kImageBaseUrl + searchedMovies[index].posterPath,
-                    height: 100,
-                    width: 90,
-                    fit: BoxFit.fill,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ConstrainedBox(
-                          constraints: BoxConstraints(
-                              maxHeight: 50, maxWidth: size.width - 130),
-                          child: Text(
-                            searchedMovies[index].title,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                            'Release Date: ' +
-                                _stringToDate(
-                                  searchedMovies[index].releaseDate,
-                                ),
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16)),
-                        Text(
-                            'Ratings: ' +
-                                searchedMovies[index].voteAverage.toString() +
-                                '/10',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16))
-                      ],
+    return SizedBox(
+      height: size.height - 160,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: ListView.builder(
+          itemCount: searchedMovies.length,
+          itemBuilder: (context, index) {
+            return InkWell(
+              child: Card(
+                color: kBackgroundColor,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Image.network(
+                      kImageBaseUrl + searchedMovies[index].posterPath,
+                      height: 100,
+                      width: 90,
+                      fit: BoxFit.fill,
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ConstrainedBox(
+                            constraints: BoxConstraints(
+                                maxHeight: 50, maxWidth: size.width - 130),
+                            child: Text(
+                              searchedMovies[index].title,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: kTextColor),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                              'Release Date: ' +
+                                  _stringToDate(
+                                    searchedMovies[index].releaseDate,
+                                  ),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 16,
+                                  color: kTextColor)),
+                          Text(
+                              'Ratings: ' +
+                                  searchedMovies[index].voteAverage.toString() +
+                                  '/10',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 16,
+                                  color: kTextColor))
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => MovieDetailsPage(
-                        id: searchedMovies[index].id,
-                        movieTitle: searchedMovies[index].title,
-                        ratings: searchedMovies[index].voteAverage,
-                      )));
-            },
-          );
-        },
-        // separatorBuilder: (context, index) {
-        //   return Divider();
-        // },
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => MovieDetailsPage(
+                          id: searchedMovies[index].id,
+                          movieTitle: searchedMovies[index].title,
+                          ratings: searchedMovies[index].voteAverage,
+                        )));
+              },
+            );
+          },
+        ),
       ),
     );
   }

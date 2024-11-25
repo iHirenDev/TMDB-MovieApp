@@ -20,62 +20,69 @@ class _MovieSearchFieldWidgetState extends State<MovieSearchFieldWidget> {
     Size size = MediaQuery.of(context).size;
     return BlocBuilder<MovieSearchBloc, MovieSearchState>(
       builder: (context, state) {
-        return Column(
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
+        return SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
               children: [
-                Icon(
-                  Icons.search,
-                  color: kPrimaryColor,
-                  size: 30,
-                ),
-                Expanded(
-                  child: TextField(
-                    autofocus: true,
-                    style: TextStyle(fontSize: 20),
-                    onTap: () {
-                      setState(() {
-                        widget.isEditing = true;
-                      });
-                    },
-                    onChanged: (query) {
-                      context
-                          .read<MovieSearchBloc>()
-                          .add(SearchMovieEvent(query: query));
-                    },
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0)),
-                        hintText: 'Search TMDB',
-                        hintStyle:
-                            TextStyle(color: kPrimaryColor.withOpacity(0.5))),
-                  ),
-                ),
-                widget.isEditing
-                    ? TextButton(
-                        onPressed: () {
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.search,
+                      color: kPrimaryColor,
+                      size: 30,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        autofocus: true,
+                        style: TextStyle(fontSize: 20, color: kTextColor),
+                        onTap: () {
                           setState(() {
-                            widget.isEditing = false;
+                            widget.isEditing = true;
                           });
-                          //Navigator.pop(context);
                         },
-                        child: Text(
-                          'Cancel',
-                          style: TextStyle(
-                              color: kPrimaryColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ))
-                    : SizedBox()
+                        onChanged: (query) {
+                          context
+                              .read<MovieSearchBloc>()
+                              .add(SearchMovieEvent(query: query));
+                        },
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0)),
+                            hintText: 'Search TMDB',
+                            hintStyle: TextStyle(
+                                color: kPrimaryColor.withOpacity(0.5))),
+                      ),
+                    ),
+                    widget.isEditing
+                        ? TextButton(
+                            onPressed: () {
+                              setState(() {
+                                widget.isEditing = false;
+                              });
+                              //Navigator.pop(context);
+                            },
+                            child: Text(
+                              'Cancel',
+                              style: TextStyle(
+                                  color: kPrimaryColor,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ))
+                        : SizedBox()
+                  ],
+                ),
+                state.status.isEmpty
+                    ? SizedBox()
+                    : SearchedMovieList(searchedMovies: state.searchedMovies)
+                // SizedBox(
+                //     height: size.height - 220,
+                //     child: state.status.isEmpty
+                //         ? SizedBox()
+                //         : SearchedMovieList(searchedMovies: state.searchedMovies))
               ],
             ),
-            SizedBox(
-                height: size.height - 200,
-                child: state.status.isEmpty
-                    ? SizedBox()
-                    : SearchedMovieList(searchedMovies: state.searchedMovies))
-          ],
+          ),
         );
       },
     );

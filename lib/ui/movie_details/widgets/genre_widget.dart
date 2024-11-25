@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc_demo/helper/constants.dart';
 import 'package:flutter_bloc_demo/repository/models/movie_details.dart';
 
 class GenreWidget extends StatelessWidget {
@@ -24,7 +25,7 @@ class GenreWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(4.0),
                 child: Container(
                     decoration: BoxDecoration(
-                        border: Border.all(width: 1.0),
+                        border: Border.all(width: 1.0, color: kTextColor),
                         shape: BoxShape.rectangle,
                         borderRadius: BorderRadius.circular(5.0)),
                     child: Padding(
@@ -32,7 +33,9 @@ class GenreWidget extends StatelessWidget {
                       child: Text(
                         genres![index].name!,
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                            color: kTextColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       ),
                     )),
               )

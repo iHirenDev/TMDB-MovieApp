@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc_demo/repository/models/similar_movies.dart';
 import 'package:flutter_bloc_demo/repository/models/trending_movie.dart';
 import 'package:flutter_bloc_demo/repository/movie_repository.dart';
 

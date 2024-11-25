@@ -4,7 +4,7 @@ import 'package:flutter_bloc_demo/repository/models/movie_details.dart';
 import 'package:flutter_bloc_demo/repository/models/movie_reviews.dart';
 import 'package:flutter_bloc_demo/repository/models/search_movie.dart';
 import 'package:flutter_bloc_demo/repository/models/trending_movie.dart';
-import 'package:flutter_bloc_demo/repository/models/upcoming_movie.dart';
+import 'package:flutter_bloc_demo/repository/models/similar_movies.dart';
 
 class MovieRepository {
   const MovieRepository({required this.trendingMovieAPI});
@@ -23,7 +23,7 @@ class MovieRepository {
   Future<List<Cast>> getMovieCasts(int movieId) async =>
       trendingMovieAPI.getMovieCasts(movieId);
 
-  Future<List<TredndingMovieResult>> getSimilarMovies(int movieId) async =>
+  Future<List<SimilarMoviesResults>> getSimilarMovies(int movieId) async =>
       trendingMovieAPI.getSimilarMovies(movieId);
 
   Future<List<SearchMovieResults>> searchMovies(String query) async =>

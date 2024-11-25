@@ -26,7 +26,7 @@ class MovieCastsListWidget extends StatelessWidget {
                 children: <Widget>[
                   ClipOval(
                     child: FadeInImage.assetNetwork(
-                      placeholder: 'assets/tmdb.png',
+                      placeholder: 'assets/tmdb2.png',
                       image: movieCasts[index].profilePath == null
                           ? 'https://cdn4.iconfinder.com/data/icons/evil-icons-user-interface/64/avatar-512.png'
                           : kImageBaseUrl + movieCasts[index].profilePath!,
@@ -37,7 +37,10 @@ class MovieCastsListWidget extends StatelessWidget {
                   ),
                   Text(
                     movieCasts[index].name,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: kTextColor),
                   ),
                 ],
               ),

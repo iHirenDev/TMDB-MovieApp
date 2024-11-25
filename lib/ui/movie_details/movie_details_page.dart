@@ -67,6 +67,7 @@ class MovieDetailsPage extends StatelessWidget {
                     children: <Widget>[
                       MovieDetailsHeader(),
                       Divider(
+                        color: Colors.white,
                         thickness: 2,
                       ),
                       Padding(
@@ -81,6 +82,7 @@ class MovieDetailsPage extends StatelessWidget {
                       ),
                       MovieCastsWidget(),
                       Divider(
+                        color: Colors.white,
                         thickness: 2,
                       ),
                       Padding(
@@ -96,6 +98,7 @@ class MovieDetailsPage extends StatelessWidget {
                               Expanded(child: SizedBox()),
                               Icon(
                                 Icons.chevron_right_sharp,
+                                color: Colors.white,
                                 size: 28,
                               )
                             ],
@@ -110,6 +113,7 @@ class MovieDetailsPage extends StatelessWidget {
                         ),
                       ),
                       Divider(
+                        color: Colors.white,
                         thickness: 2,
                       ),
                       Padding(

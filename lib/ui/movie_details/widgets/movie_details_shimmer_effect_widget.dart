@@ -89,16 +89,20 @@ class RowShimmerWidget extends StatelessWidget {
           ],
         ),
         Expanded(child: SizedBox()),
-        Column(
-          children: [
-            ShimmerEffect(
-                height: 90, width: 90, cornerRadius: 0, isCircle: true),
-            SizedBox(
-              height: 10,
-            ),
-            ShimmerEffect(
-                height: 30, width: 120, cornerRadius: 10, isCircle: false)
-          ],
+        SizedBox(
+          height: 130,
+          width: 115,
+          child: Column(
+            children: [
+              ShimmerEffect(
+                  height: 90, width: 90, cornerRadius: 0, isCircle: true),
+              SizedBox(
+                height: 10,
+              ),
+              ShimmerEffect(
+                  height: 30, width: 120, cornerRadius: 10, isCircle: false)
+            ],
+          ),
         ),
       ],
     );

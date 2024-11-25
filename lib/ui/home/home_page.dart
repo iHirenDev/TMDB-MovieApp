@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_demo/helper/constants.dart';
+import 'package:flutter_bloc_demo/helper/preferences.dart';
+import 'package:flutter_bloc_demo/helper/themes.dart';
 import 'package:flutter_bloc_demo/repository/apiservices/trending_movie_api.dart';
 import 'package:flutter_bloc_demo/repository/models/trending_movie.dart';
 import 'package:flutter_bloc_demo/repository/movie_repository.dart';
@@ -12,10 +14,34 @@ import 'package:flutter_bloc_demo/ui/home/widgets/movie_card_list.dart';
 import 'package:flutter_bloc_demo/ui/home/widgets/movie_search_header.dart';
 import 'package:flutter_bloc_demo/ui/home/widgets/upcoming_movie_list.dart';
 
+import 'bloc/Theme/theme_bloc.dart';
 import 'bloc/UpcomingMovies/upcoming_movie_bloc.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    _loadThemeFromPreferences();
+  }
+
+  _loadThemeFromPreferences() async {
+    context
+        .read<ThemeBloc>()
+        .add(SelectTheme(appThemes: Preferences.getTheme()!));
+  }
+
+  _changeTheme(bool darkTheme) async {
+    AppThemes selectedTheme = darkTheme ? AppThemes.light : AppThemes.dark;
+    context.read<ThemeBloc>().add(SelectTheme(appThemes: selectedTheme));
+    Preferences.saveTheme(selectedTheme);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +51,17 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: kPrimaryColor,
           elevation: 0.0,
+
+          /*
+          Theme switch...
+          actions: [
+            Switch(
+                value: Preferences.getTheme() == AppThemes.light,
+                onChanged: (val) async {
+                  _changeTheme(val);
+                })
+          ],
+          */
         ),
         body: RepositoryProvider(
             create: (context) => MovieRepository(
@@ -53,28 +90,74 @@ class HomePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             //Header(size: size),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: kDefaultPadding),
-                              child: Text(
-                                'Trending Movies',
-                                style: TextStyle(
-                                    color: kTextColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 28),
-                              ),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: kDefaultPadding),
+                                  child: Text(
+                                    'Trending Movies',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 28,
+                                      color: Colors.white,
+                                      // color: Theme.of(context)
+                                      //     .textTheme
+                                      //     .bodyText2
+                                      //     ?.color
+                                    ),
+                                  ),
+                                ),
+                                Expanded(child: SizedBox()),
+                                InkWell(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Show All',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 24,
+                                        color: Colors.white,
+                                        // color: Theme.of(context)
+                                        //     .textTheme
+                                        //     .bodyText2
+                                        //     ?.color
+                                      ),
+                                    ),
+                                  ),
+                                  onTap: () {},
+                                )
+                              ],
                             ),
                             MovieCardList(),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: kDefaultPadding),
-                              child: Text(
-                                'Popular Movies',
-                                style: TextStyle(
-                                    color: kTextColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 28),
-                              ),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: kDefaultPadding),
+                                  child: Text(
+                                    'Popular Movies',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 28),
+                                  ),
+                                ),
+                                Expanded(child: SizedBox()),
+                                InkWell(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Show All',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 24),
+                                    ),
+                                  ),
+                                  onTap: () {},
+                                )
+                              ],
                             ),
                             UpcomingMovieList()
                           ],

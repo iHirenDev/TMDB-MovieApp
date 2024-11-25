@@ -20,7 +20,7 @@ class MovieSearchHeader extends StatelessWidget {
             padding: EdgeInsets.only(
               left: kDefaultPadding,
               right: kDefaultPadding,
-              bottom: 36 + kDefaultPadding,
+              bottom: 36,
             ),
             height: size.height * 0.2 - 27,
             decoration: BoxDecoration(

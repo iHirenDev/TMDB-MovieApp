@@ -12,16 +12,16 @@ extension SimilarMoviesStatusX on SimilarMoviesStatus {
 class SimilarMoviesState extends Equatable {
   const SimilarMoviesState(
       {this.status = SimilarMoviesStatus.initial,
-      this.similarMovies = const <TredndingMovieResult>[]});
+      this.similarMovies = const <SimilarMoviesResults>[]});
 
   final SimilarMoviesStatus status;
-  final List<TredndingMovieResult> similarMovies;
+  final List<SimilarMoviesResults> similarMovies;
   @override
   List<Object> get props => [status, similarMovies];
 
   SimilarMoviesState copyWith(
       {SimilarMoviesStatus? status,
-      List<TredndingMovieResult>? similarMovies}) {
+      List<SimilarMoviesResults>? similarMovies}) {
     return SimilarMoviesState(
         status: status ?? this.status,
         similarMovies: similarMovies ?? this.similarMovies);

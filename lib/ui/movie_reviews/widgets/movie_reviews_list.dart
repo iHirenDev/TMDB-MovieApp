@@ -7,6 +7,8 @@ import 'package:flutter_bloc_demo/ui/movie_details/widgets/movie_description_wid
 import 'package:flutter_bloc_demo/ui/movie_reviews/widgets/movie_reviews_header_widget.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../../../helper/constants.dart';
+
 class MovieReviewsList extends StatelessWidget {
   const MovieReviewsList(
       {Key? key, required this.reviews, required this.ratings})
@@ -27,8 +29,8 @@ class MovieReviewsList extends StatelessWidget {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             RatingBar.builder(
-                initialRating: ratings,
-                itemCount: 10,
+                initialRating: ratings / 2,
+                itemCount: 5,
                 direction: Axis.horizontal,
                 allowHalfRating: true,
                 itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
@@ -60,14 +62,15 @@ class MovieReviewsList extends StatelessWidget {
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20,
-                                      fontStyle: FontStyle.italic),
+                                      fontStyle: FontStyle.italic,
+                                      color: kTextColor),
                                 ),
                                 Expanded(child: SizedBox()),
                               ],
                             ),
                             const Divider(
                               height: 4.0,
-                              color: Colors.black,
+                              color: Colors.white,
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 8, bottom: 8),
@@ -78,7 +81,8 @@ class MovieReviewsList extends StatelessWidget {
                                   : Text(reviews[index].content,
                                       style: TextStyle(
                                           fontSize: 16,
-                                          fontWeight: FontWeight.bold)),
+                                          fontWeight: FontWeight.bold,
+                                          color: kTextColor)),
                             ),
                             SizedBox(
                               height: 4,
