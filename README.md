@@ -33,6 +33,13 @@ A sleek and modern Flutter application that showcases trending and popular movie
 4. **Getting Started**
 
    - Grab your API key from [TMDB](https://www.themoviedb.org/).
+  
+## Screenshots
+
+<pre><img src="splash.png" width="250" height="480">        <img src="home.png" width="250" height="480">     <img src="movie_details.png" width="250" height="480"></pre>
+
+<pre><img src="movie_details2.png" width="250" height="480">        <img src="movie_details3.png" width="250" height="480">      <img src="search_movie.png" width="250" height="480"></pre>
+
 
 
 
